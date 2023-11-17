@@ -1,0 +1,17 @@
+
+.image-wrapper {
+    columns: 3;
+}
+
+img{
+    margin-bottom: 15px;
+}
+
+app-search-bar{
+    margin: auto;
+}
+
+.message{
+    margin-top: 200px;
+    text-align: center;
+}

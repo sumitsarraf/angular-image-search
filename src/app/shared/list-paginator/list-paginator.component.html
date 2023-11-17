@@ -1,0 +1,23 @@
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+
+        <li class="page-item pulsable" *ngIf="buttonState[0]" (click)="changeNextOrPreviousPage(-1)">
+            <a class="page-link" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+
+        <div *ngFor="let pageNumber of paginatorNumbers" class="pulsable">
+            <li class="page-item"        *ngIf="pageNumber != actualPage" (click)="changePage(pageNumber)"><a class="page-link">{{pageNumber}}</a></li>
+            <li class="page-item active" *ngIf="pageNumber == actualPage" (click)="changePage(pageNumber)"><a
+                    class="page-link">{{pageNumber}}</a></li>
+        </div>
+
+
+        <li class="page-item pulsable" *ngIf="buttonState[1]" (click)="changeNextOrPreviousPage(1)">
+            <a class="page-link" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>

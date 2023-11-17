@@ -1,0 +1,42 @@
+<app-search-bar
+  (searchEvent)="getSearchEvent($event)"
+  actual-value="actualQuery"
+></app-search-bar>
+
+<ng-container *ngIf="queryError; then queryErrorTemplate; else querySucces">
+</ng-container>
+
+<ng-template #querySucces>
+  <ng-container
+    *ngIf="
+      imagePageData?.results.length > 0;
+      then resultNotEmpty;
+      else resultEmpty
+    "
+  >
+  </ng-container>
+</ng-template>
+
+<ng-template #resultNotEmpty>
+  <div class="container image-wrapper">
+    <div
+      *ngFor="let image of imagePageData?.results"
+      (click)="goToImageDetais(image.id)"
+    >
+      <img src="{{ image.urls.small }}" alt="Card image cap" />
+    </div>
+  </div>
+  <app-list-paginator
+    (actualPageChange)="onActualPageChange($event)"
+    [actual-page]="actualPage"
+    [number-page]="imagePageData?.total_pages"
+  ></app-list-paginator>
+</ng-template>
+
+<ng-template #resultEmpty>
+  <h1 class="message">No hay resultados</h1>
+</ng-template>
+
+<ng-template #queryErrorTemplate>
+  <h1 class="message">Error al conectar con el servidor</h1>
+</ng-template>

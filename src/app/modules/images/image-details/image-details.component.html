@@ -1,0 +1,39 @@
+<span class="wrapper">
+    <div class="image-wrapper">
+        <img src="{{imageDetails.urls.regular}}" alt="{{imageDetails.alt_description}}">
+    </div>
+
+
+
+
+    <div class="image-data-wrapper">
+        <div>By</div>
+        <h3>{{imageDetails.user.username}}</h3>
+
+        <br>
+        <div class="description-block">
+            <h5>Description</h5>
+            <div>{{imageDetails.description}}</div>
+        </div>
+        <br>
+
+        <div class="public-domain-section">
+            <h5>Public domain</h5>
+            <img *ngIf="imageDetails.public_domain" alt="Is public domain" src="../../../../assets/Icons/check.png">
+            <img *ngIf="!imageDetails.public_domain" alt="Isn't public domain " src="../../../../assets/Icons/close.png">
+        </div>
+
+        <div *ngIf="imageDetails?.tags.length > 0">
+            <h5>Tags</h5>
+            <div class="tags">
+                <button type="button" (click)="searchTag(tags.title)" class="btn tag-button"
+                    *ngFor="let tags of imageDetails?.tags">#{{tags.title}}</button>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+</span>
